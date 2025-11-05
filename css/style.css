@@ -22,6 +22,135 @@ body{
 .logo_nav{
     height: 40px;
 }
+
+.parallax_inicio {
+  background-image: url("../img/landingImgCafeteroHotel.jpg");
+  min-height: 600px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.txt_titulo_inicio {
+  text-align: center;
+  font-size: large;
+  color: white;
+  z-index: 1;
+  width: 40%;
+  padding: 20px 40px;
+  background: rgba(54, 54, 54, 0.4); /* fondo difuminado */
+  border-radius: 10px;
+  backdrop-filter: blur(5px); /* efecto de difuminado */
+}
+
+.espaciado_quienes_somos {
+    padding: 2%;
+}
+
+.col img {
+    display: block;
+  margin: 0 auto;         /* centra horizontalmente */
+  width: 500px;           /* ajusta el tamaño según lo que necesites */
+  height: 500px;
+  border-radius: 50%;     /* hace la imagen circular */
+  object-fit: cover;      /* recorta la imagen sin deformarla */
+
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.btn_social {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #222;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 28px;
+  transition: background-color 0.3s ease;
+}
+
+.btn_social.instagram:hover {
+  background-color: #E1306C;
+}
+
+.btn_social.tiktok:hover {
+  background-color: #000000;
+}
+
+.btn_social.x:hover {
+  background-color: #1DA1F2;
+}
+
+.testimonial-banner {
+  background-image: url('../img/cafe-colombiano.jpg'); /* reemplaza con tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+  position: relative;
+  color: white;
+  padding: 60px 20px;
+  backdrop-filter: blur(4px);
+}
+
+.testimonial-banner::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* capa oscura para difuminar */
+  z-index: 0;
+}
+
+.testimonial-banner .container {
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-text {
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.testimonial-author {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+
+.card-custom {
+  background-color: #6f4e37; /* café */
+  color: white;
+  padding: 30px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card-custom:hover {
+  background-color: #8b5e3c; /* café más claro al pasar el mouse */
+}
+
+.card-custom .btn {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
 .header_rooms{
     background-image: url('../img/cafetero.webp');
     background-size: cover;     /* Ajusta la imagen para cubrir toda el área */

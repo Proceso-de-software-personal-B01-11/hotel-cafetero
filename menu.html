@@ -28,13 +28,6 @@
            --- Encabezado principal ---
            Contiene el título y el eslogan del restaurante.
         */
-      header {
-        background-color: #6b4f36;
-        color: white;
-        text-align: center;
-        padding: 20px;
-      }
-
       h1 {
         margin: 0;
         font-size: 2em;
@@ -109,13 +102,21 @@
         padding: 10px;
       }
     </style>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
 
   <body>
     <!-- Encabezado de la página -->
-    <header>
-      <h1>Menú del Hotel Café Colombiano</h1>
-      <p>Sabores auténticos de nuestra tierra ☕🇨🇴</p>
+     
+ <header>
+        <nav class="menu_nav">
+            <img class="logo_nav" src="img/logoHotel Cafetero.webp" alt="">
+            <a href="inicio.html">Inicio</a>
+            <a href="habitaciones.html">habitaciones</a>
+            <a href="menu.html">Nuestro menú</a>
+            <a href="eventos.html">Eventos</a>
+        </nav>
     </header>
 
     <!-- Sección principal del menú con tres platos destacados -->
@@ -154,9 +155,10 @@
       </div>
     </section>
 
-    <!-- Pie de página del sitio -->
-    <footer>
-      <p>© 2025 Hotel Café Colombiano - Todos los derechos reservados</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Hotel Cafetero. Todos los derechos reservados.</p>
+        </div>
     </footer>
   </body>
 </html>
