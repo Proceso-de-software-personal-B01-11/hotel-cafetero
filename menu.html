@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- 
+        Proyecto: Implementación de la página del menú
+        Autor: Mateo Olivar
+        Descripción: Página principal del menú del Hotel Café Colombiano.
+        Contiene estructura HTML y estilos internos en CSS.
+    -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú - Hotel Café Colombiano</title>
+
+    <style>
+      /* 
+           --- Estilos generales del sitio ---
+           Se define el fondo, la tipografía y la estructura visual.
+        */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f3efe7;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 
+           --- Encabezado principal ---
+           Contiene el título y el eslogan del restaurante.
+        */
+      header {
+        background-color: #6b4f36;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2em;
+      }
+
+      /* 
+           --- Contenedor principal del menú ---
+           Distribuye los elementos de manera flexible y centrada.
+        */
+      .menu-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      /* 
+           --- Elementos individuales del menú ---
+           Cada uno representa un plato con su imagen, nombre y descripción.
+        */
+      .menu-item {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        margin: 15px;
+        width: 280px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      /* 
+           Efecto visual al pasar el cursor sobre cada plato
+        */
+      .menu-item:hover {
+        transform: scale(1.05);
+      }
+
+      /* 
+           --- Imágenes de los platos ---
+           Se ajustan al tamaño del contenedor con esquinas redondeadas.
+        */
+      .menu-item img {
+        width: 100%;
+        height: 180px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        object-fit: cover;
+      }
+
+      /* 
+           --- Títulos y descripciones de los platos ---
+           Colores y márgenes específicos para legibilidad.
+        */
+      .menu-item h3 {
+        color: #6b4f36;
+        margin: 10px 0 5px;
+      }
+
+      .menu-item p {
+        margin: 0 10px 10px;
+        color: #555;
+      }
+
+      /* 
+           --- Pie de página ---
+           Incluye derechos reservados y año de creación.
+        */
+      footer {
+        background-color: #6b4f36;
+        color: white;
+        text-align: center;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Encabezado de la página -->
+    <header>
+      <h1>Menú del Hotel Café Colombiano</h1>
+      <p>Sabores auténticos de nuestra tierra ☕🇨🇴</p>
+    </header>
+
+    <!-- Sección principal del menú con tres platos destacados -->
+    <section class="menu-container">
+      <!-- Plato 1: Café de origen -->
+      <div class="menu-item">
+        <img src="img/cafe-colombiano.jpg" alt="Café Colombiano" />
+        <h3>Café de origen</h3>
+        <p>
+          Café 100% colombiano preparado con granos seleccionados del Eje
+          Cafetero.
+        </p>
+        <p><strong>$8.000</strong></p>
+      </div>
+
+      <!-- Plato 2: Bandeja Paisa -->
+      <div class="menu-item">
+        <img src="img/bandeja-paisa.jpg" alt="Bandeja Paisa" />
+        <h3>Bandeja Paisa</h3>
+        <p>
+          Plato típico con frijoles, chicharrón, huevo, arroz, carne molida y
+          aguacate.
+        </p>
+        <p><strong>$25.000</strong></p>
+      </div>
+
+      <!-- Plato 3: Arepa con Queso -->
+      <div class="menu-item">
+        <img src="img/arepa-con-queso.jpg" alt="Arepa con Queso" />
+        <h3>Arepa con Queso</h3>
+        <p>
+          Arepa artesanal con queso campesino fundido, ideal para acompañar el
+          café.
+        </p>
+        <p><strong>$6.000</strong></p>
+      </div>
+    </section>
+
+    <!-- Pie de página del sitio -->
+    <footer>
+      <p>© 2025 Hotel Café Colombiano - Todos los derechos reservados</p>
+    </footer>
+  </body>
+</html>
