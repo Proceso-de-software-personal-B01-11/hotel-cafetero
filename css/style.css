@@ -646,10 +646,24 @@ footer {
   order: 2;
 }
 
+.actividad-content-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
 .actividad-lista {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+}
+
+.actividad-content-vertical .actividad-lista {
+  width: 100%;
+  max-width: 800px;
 }
 
 .actividad-caracteristicas {
@@ -677,8 +691,15 @@ footer {
 
 .actividad-imagen {
   width: 100%;
+  max-width: 800px;
   overflow: hidden;
   border-radius: 10px;
+  margin: 0 auto;
+}
+
+.actividad-content-vertical .actividad-imagen {
+  width: 100%;
+  max-width: 100%;
 }
 
 .actividad-imagen img {
