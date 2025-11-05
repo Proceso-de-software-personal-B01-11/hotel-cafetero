@@ -10,7 +10,9 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú - Hotel Café Colombiano</title>
+    <title>Menú - Hotel Cafetero</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <style>
       /* 
@@ -114,9 +116,33 @@
   <body>
     <!-- Encabezado de la página -->
     <header>
-      <h1>Menú del Hotel Café Colombiano</h1>
-      <p>Sabores auténticos de nuestra tierra ☕🇨🇴</p>
+      <nav class="menu_nav">
+        <img
+          class="logo_nav"
+          src="img/logoHotelCafeter.png"
+          alt="Hotel Cafetero"
+        />
+        <a href="#">Inicio</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="actividades.html">Actividades</a>
+        <a href="habitaciones.html">Habitaciones</a>
+        <a href="menu.html">Nuestro menú</a>
+      </nav>
     </header>
+
+    <section class="hero-actividades">
+      <div class="hero-overlay-actividades">
+        <h1>MENÚ</h1>
+        <p>Sabores auténticos del Eje Cafetero</p>
+        <p class="hero-descripcion">
+          Descubre nuestra amplia variedad de cafés especiales, preparados con
+          granos seleccionados de las mejores fincas cafeteras. Disfruta de la
+          gastronomía regional con platos típicos, bebidas artesanales y postres
+          tradicionales. Cada sabor cuenta la historia del café colombiano.
+        </p>
+        <button class="btn-reservar">VER MENÚ</button>
+      </div>
+    </section>
 
     <!-- Sección principal del menú con tres platos destacados -->
     <section class="menu-container">
