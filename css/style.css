@@ -435,7 +435,7 @@ footer {
 }
 
 .footer {
-  background-color: #2c3e50;
+  background-color: gray;
   padding: 30px 20px;
   text-align: center;
 }
@@ -975,99 +975,182 @@ footer {
   }
 }
 
-/* ========== ESTILOS PÁGINA FAQ ========== */
 
-.faq-container {
+.social-section {
+  background: #2d3e50;
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.social-container {
   max-width: 900px;
   margin: 0 auto;
 }
 
-.faq-item {
-  background: white;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.faq-item:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-.faq-question {
-  font-size: 1.3rem;
-  color: #8b6f47;
-  padding: 25px 30px;
-  margin: 0;
-  cursor: pointer;
+.social-container h2 {
+  font-size: 2.2rem;
+  color: white;
+  margin-bottom: 10px;
   font-weight: bold;
-  position: relative;
-  user-select: none;
-  transition: color 0.3s ease;
+  letter-spacing: 1px;
 }
 
-.faq-question:hover {
-  color: #6b5638;
+.social-container h3 {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 25px;
+  font-weight: 600;
 }
 
-.faq-question::after {
-  content: "+";
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  font-weight: 300;
-  color: #8b6f47;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.faq-item.active .faq-question::after {
-  content: "−";
-  transform: translateY(-50%) rotate(0deg);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  padding: 0 30px;
-}
-
-.faq-item.active .faq-answer {
-  max-height: 500px;
-  padding: 0 30px 25px;
-}
-
-.faq-answer p {
+.social-container > p {
   font-size: 1.1rem;
-  color: #555;
-  line-height: 1.8;
-  margin: 0;
-  padding-top: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 35px;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.btn-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-share svg {
+  width: 22px;
+  height: 22px;
+}
+
+.btn-share.facebook {
+  background-color: #1877f2;
+  color: white;
+}
+
+.btn-share.facebook:hover {
+  background-color: #145dbf;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(24, 119, 242, 0.4);
+}
+
+.btn-share.whatsapp {
+  background-color: #25d366;
+  color: white;
+}
+
+.btn-share.whatsapp:hover {
+  background-color: #1da851;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-share.twitter {
+  background-color: #000000;
+  color: white;
+}
+
+.btn-share.twitter:hover {
+  background-color: #333333;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.social-divider {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 40px auto;
+  max-width: 300px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-width: 140px;
+}
+
+.social-link svg {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 5px;
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(225, 48, 108, 0.4);
+}
+
+.social-link.facebook:hover {
+  background-color: #1877f2;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+}
+
+.social-link.tiktok:hover {
+  background-color: #000000;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 768px) {
-  .faq-question {
-    font-size: 1.1rem;
-    padding: 20px 50px 20px 20px;
+  .social-container h2 {
+    font-size: 1.8rem;
   }
 
-  .faq-question::after {
-    right: 20px;
-    font-size: 1.5rem;
+  .social-container h3 {
+    font-size: 1.3rem;
   }
 
-  .faq-answer {
-    padding: 0 20px;
+  .share-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
 
-  .faq-item.active .faq-answer {
-    padding: 0 20px 20px;
+  .btn-share {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
   }
 
-  .faq-answer p {
-    font-size: 1rem;
+  .social-links {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .social-link {
+    width: 100%;
+    max-width: 280px;
   }
 }
