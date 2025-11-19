@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/galeria.css">
   </head>
   <body>
     <header>
@@ -48,6 +49,89 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </div>
     </main>
+    <div class="gallery-container">
+    <h2 class="titulo_galeria">Conoce nuestros espacios</h2>
+
+    <!-- BARRA DE FILTROS -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="image">Fotos</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+    </div>
+
+    <!-- GRID DE GALERÍA -->
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- Ejemplos de FOTOS -->
+      <div class="gallery-item" data-type="image" data-caption="Foto de ejemplo 1">
+        <span class="badge">Foto</span>
+        <img class="gallery-thumb"
+             src="img/cafetal_1.jpg"
+             alt="Paisaje de ejemplo 1">
+      </div>
+
+      <div class="gallery-item" data-type="image" data-caption="Foto de ejemplo 2">
+        <span class="badge">Foto</span>
+        <img class="gallery-thumb"
+             src="img/cafetal_2.jpg"
+             alt="Paisaje de ejemplo 2">
+      </div>
+
+      <!-- Ejemplo de VIDEO  -->
+      <div class="gallery-item" data-type="video" data-caption="Video de ejemplo 1">
+        <span class="badge">Video</span>
+        <img class="gallery-thumb"
+             src="img/cafetal_4.jpg"
+             alt="Miniatura video 1">
+        <!-- Icono de play encima -->
+        <div class="play-icon"></div>
+        <span class="video-src" data-video-src="https://www.youtube.com/watch?v=PkBQi62J_k4"></span>
+      </div>
+
+      <!-- Otro VIDEO -->
+      <div class="gallery-item" data-type="video" data-caption="Video de ejemplo 2">
+        <span class="badge">Video</span>
+        <img class="gallery-thumb"
+             src="img/cafetal_3.jpg"
+             alt="Miniatura video 2">
+        <div class="play-icon"></div>
+        <span class="video-src" data-video-src="video-ejemplo-2.mp4"></span>
+        
+      </div>
+
+      <!-- Más FOTOS (ejemplo) -->
+      <div class="gallery-item" data-type="image" data-caption="Foto de ejemplo 3">
+        <span class="badge">Foto</span>
+        <img class="gallery-thumb"
+             src="img/cafetal_5.jpg"
+             alt="Paisaje de ejemplo 3">
+      </div>
+      <div class="gallery-item" data-type="image" data-caption="Foto de ejemplo 4">
+        <span class="badge">Foto</span>
+        <img class="gallery-thumb"
+             src="https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800"
+             alt="Paisaje de ejemplo 4">
+      </div>
+      <div class="gallery-item" data-type="image" data-caption="Foto de ejemplo 4">
+        <span class="badge">Foto</span>
+        <img class="gallery-thumb"
+             src="img/cafetal_6.jpg"
+             alt="Paisaje de ejemplo 5">
+      </div>
+    </div>
+  </div>
+  <!--  MODAL / LIGHTBOX  -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
+      <button class="modal-nav modal-prev" id="modalPrev" aria-label="Anterior">&#10094;</button>
+      <button class="modal-nav modal-next" id="modalNext" aria-label="Siguiente">&#10095;</button>
+      <div class="modal-media-wrapper" id="modalMediaWrapper">
+      </div>
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+  </div>
+  <script src="js/galeria.js"></script>
     <div>
       <div class="room_description">
         <img src="./img/room_1.jpg" alt="" class="img_room2" />
