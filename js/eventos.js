@@ -51,25 +51,25 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!formData.nombre || !formData.email || !formData.telefono || 
                 !formData.tipoEvento || !formData.fecha || !formData.asistentes || 
                 !formData.mensaje) {
-                mostrarMensaje('❌ Por favor completa todos los campos', 'error');
+                mostrarMensaje('Por favor completa todos los campos', 'error');
                 return;
             }
 
             // Validación de email con @
             if (!validarEmail(formData.email)) {
-                mostrarMensaje('❌ Por favor ingrese un correo válido con @ y dominio', 'error');
+                mostrarMensaje('Por favor ingrese un correo válido con @ y dominio', 'error');
                 return;
             }
 
             // Validación de teléfono
             if (!validarTelefono(formData.telefono)) {
-                mostrarMensaje('❌ Por favor ingresa un teléfono válido', 'error');
+                mostrarMensaje('Por favor ingresa un teléfono válido', 'error');
                 return;
             }
 
             // Validación de fecha posterior a hoy
             if (!validarFechaFutura(formData.fecha)) {
-                mostrarMensaje('❌ La fecha del evento debe ser posterior a hoy', 'error');
+                mostrarMensaje('La fecha del evento debe ser posterior a hoy', 'error');
                 return;
             }
 
@@ -112,15 +112,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('🚀 Enviando a Google Sheets...');
 
-        // Enviar a Google Sheets con manejo de CORS
         fetch(scriptURL, { 
             method: 'POST',
-            mode: 'no-cors', // Importante para evitar errores de CORS
+            mode: 'no-cors',
             body: formDataToSend
         })
         .then(() => {
-            // Con mode: 'no-cors' no podemos leer la respuesta,
-            // pero si llega aquí sin error, asumimos éxito
             console.log('Enviado exitosamente');
             
             // Guardar en localStorage como backup
@@ -132,8 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error completo:', error);
             
-            // Incluso si hay "error", con no-cors igual puede haberse enviado
-            // Guardar localmente por si acaso
             guardarEnLocal(datos);
             
             mostrarMensaje(' Solicitud procesada. Si no recibe respuesta, contáctenos directamente.', 'exito');
@@ -167,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // Smooth scroll para enlaces internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -182,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Efecto parallax en el hero
 window.addEventListener('scroll', function() {
     const hero = document.querySelector('.hero-eventos');
     if (hero) {
