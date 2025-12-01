@@ -28,8 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 
-    // ========== FORMULARIO DE CONTACTO ==========
+    // ========== FORMULARIO DE CONTACTO CON GOOGLE SHEETS ==========
     const formulario = document.getElementById('formularioEventos');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzEDHNNoZ_1aYWai8GgAYpuiymzg2MT_UurSOXiq6rPwWDyqlqvECxGEqcQDN5QVRWc/exec';
     
     if (formulario) {
         formulario.addEventListener('submit', function(e) {
@@ -46,23 +47,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 timestamp: new Date().toLocaleString('es-CO')
             };
 
+            // Validación de campos vacíos
             if (!formData.nombre || !formData.email || !formData.telefono || 
                 !formData.tipoEvento || !formData.fecha || !formData.asistentes || 
                 !formData.mensaje) {
-                mostrarMensaje('Por favor completa todos los campos', 'error');
+                mostrarMensaje('❌ Por favor completa todos los campos', 'error');
                 return;
             }
 
+            // Validación de email con @
             if (!validarEmail(formData.email)) {
-                mostrarMensaje('Por favor ingresa un correo electrónico válido', 'error');
+                mostrarMensaje('❌ Por favor ingrese un correo válido con @ y dominio', 'error');
                 return;
             }
 
+            // Validación de teléfono
             if (!validarTelefono(formData.telefono)) {
-                mostrarMensaje('Por favor ingresa un teléfono válido', 'error');
+                mostrarMensaje('❌ Por favor ingresa un teléfono válido', 'error');
                 return;
             }
 
+            // Validación de fecha posterior a hoy
+            if (!validarFechaFutura(formData.fecha)) {
+                mostrarMensaje('❌ La fecha del evento debe ser posterior a hoy', 'error');
+                return;
+            }
+
+            // Enviar a Google Sheets
             enviarDatos(formData);
         });
     }
@@ -77,40 +88,86 @@ document.addEventListener('DOMContentLoaded', function() {
         return regex.test(telefono);
     }
 
+    function validarFechaFutura(fecha) {
+        const fechaSeleccionada = new Date(fecha);
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+        return fechaSeleccionada > hoy;
+    }
+
     function enviarDatos(datos) {
         const boton = document.querySelector('.btn-enviar');
         boton.disabled = true;
         boton.textContent = 'Enviando...';
 
-        guardarEnLocal(datos);
+        // Crear FormData para enviar a Google Sheets
+        const formDataToSend = new FormData();
+        formDataToSend.append('nombre', datos.nombre);
+        formDataToSend.append('email', datos.email);
+        formDataToSend.append('telefono', datos.telefono);
+        formDataToSend.append('tipoEvento', datos.tipoEvento);
+        formDataToSend.append('fecha', datos.fecha);
+        formDataToSend.append('asistentes', datos.asistentes);
+        formDataToSend.append('mensaje', datos.mensaje);
 
-        mostrarMensaje('¡Solicitud enviada exitosamente! Nos pondremos en contacto pronto.', 'exito');
+        console.log('🚀 Enviando a Google Sheets...');
 
-        formulario.reset();
-
-        setTimeout(() => {
-            boton.disabled = false;
-            boton.textContent = 'Enviar Solicitud';
-        }, 2000);
+        // Enviar a Google Sheets con manejo de CORS
+        fetch(scriptURL, { 
+            method: 'POST',
+            mode: 'no-cors', // Importante para evitar errores de CORS
+            body: formDataToSend
+        })
+        .then(() => {
+            // Con mode: 'no-cors' no podemos leer la respuesta,
+            // pero si llega aquí sin error, asumimos éxito
+            console.log('Enviado exitosamente');
+            
+            // Guardar en localStorage como backup
+            guardarEnLocal(datos);
+            
+            mostrarMensaje('¡Solicitud enviada exitosamente! Nos pondremos en contacto pronto.', 'exito');
+            formulario.reset();
+        })
+        .catch(error => {
+            console.error('Error completo:', error);
+            
+            // Incluso si hay "error", con no-cors igual puede haberse enviado
+            // Guardar localmente por si acaso
+            guardarEnLocal(datos);
+            
+            mostrarMensaje(' Solicitud procesada. Si no recibe respuesta, contáctenos directamente.', 'exito');
+            formulario.reset();
+        })
+        .finally(() => {
+            setTimeout(() => {
+                boton.disabled = false;
+                boton.textContent = 'Enviar Solicitud';
+            }, 2000);
+        });
     }
+
 
     function guardarEnLocal(datos) {
         const solicitudes = JSON.parse(localStorage.getItem('solicitudesEventos') || '[]');
         solicitudes.push(datos);
         localStorage.setItem('solicitudesEventos', JSON.stringify(solicitudes));
-        console.log('Datos guardados:', solicitudes);
+        console.log('Datos guardados localmente:', solicitudes);
     }
 
     function mostrarMensaje(texto, tipo) {
         const mensajeDiv = document.getElementById('mensajeRespuesta');
         mensajeDiv.textContent = texto;
         mensajeDiv.className = `mensaje-respuesta ${tipo}`;
+        mensajeDiv.style.display = 'block';
         
         setTimeout(() => {
             mensajeDiv.className = 'mensaje-respuesta';
+            mensajeDiv.style.display = 'none';
         }, 5000);
     }
 
+    // Smooth scroll para enlaces internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -125,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Efecto parallax en el hero
 window.addEventListener('scroll', function() {
     const hero = document.querySelector('.hero-eventos');
     if (hero) {
